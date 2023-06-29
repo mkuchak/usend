@@ -1,0 +1,16 @@
+{
+  "name": "usend-example",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "tsx ./index.ts"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "usend-email": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "tsx": "^3.12.7"
+  }
+}

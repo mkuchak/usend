@@ -1,0 +1,21 @@
+{
+  "name": "usend-vendor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsup",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --remote"
+  },
+  "dependencies": {
+    "hono": "^3.2.6"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "@types/node": "^20.3.3",
+    "dotenv": "^16.3.1",
+    "tsup": "^7.1.0",
+    "typescript": "^5.0.4",
+    "wrangler": "^3.1.2"
+  }
+}

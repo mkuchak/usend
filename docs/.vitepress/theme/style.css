@@ -1,0 +1,250 @@
+/**
+ * Customize default theme styling by overriding CSS variables:
+ * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
+ */
+
+/**
+ * Colors
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-brand-lightest: #48c8ff;
+  --vp-c-brand-lighter: #1ea8ff;
+  --vp-c-brand-light: #068aff;
+  --vp-c-brand: #0076ff;
+  --vp-c-brand-dark: #085ac5;
+  --vp-c-brand-darker: #0d4f9b;
+  --vp-c-brand-dimm: rgba(29, 47, 85, 0.08);
+}
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: var(--vp-c-brand-light);
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand);
+  --vp-button-brand-hover-border: var(--vp-c-brand-light);
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-light);
+  --vp-button-brand-active-border: var(--vp-c-brand-light);
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-button-brand-bg);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    #0045ff 30%,
+    #00d4ff
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #0045ff 50%,
+    #00d4ff 50%
+  );
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(72px);
+  }
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-custom-block-tip-border: var(--vp-c-brand);
+  --vp-custom-block-tip-text: var(--vp-c-brand-darker);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+.dark {
+  --vp-custom-block-tip-border: var(--vp-c-brand);
+  --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+}
+
+/**
+ * Component: Algolia
+ * -------------------------------------------------------------------------- */
+
+.DocSearch {
+  --docsearch-primary-color: var(--vp-c-brand) !important;
+}
+
+/**
+ * Custom Styles
+ * -------------------------------------------------------------------------- */
+
+.flex {
+  display: flex;
+}
+
+.custom-clipboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 21px;
+  height: 21px;
+  margin-left: 4px;
+  align-items: center;
+  border-radius: 5px;
+  opacity: 0;
+  padding: 12px;
+  background-image: var(--vp-icon-copy);
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition: all 0.25s;
+  color: #808080;
+  cursor: pointer;
+}
+
+.custom-clipboard.copied {
+  background-image: var(--vp-icon-copied);
+  background-color: #e7e7e8;
+  color: #4a4a4a;
+  opacity: 1 !important;
+}
+
+.custom-clipboard:hover {
+  background-color: #e7e7e8;
+  color: #4a4a4a;
+}
+
+.dark .custom-clipboard:hover {
+  background-color: #3a3a3a;
+  color: #e7e7e8;
+}
+
+.dark .custom-clipboard.copied {
+  background-color: #3a3a3a;
+  color: #e7e7e8;
+}
+
+td:has(> .custom-copy) {
+  position: relative !important;
+}
+
+.custom-copy {
+  position: absolute;
+  right: 12px;
+  left: -12px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--vp-code-copy-code-border-color);
+  border-radius: 4px;
+  background-color: var(--vp-code-copy-code-bg);
+  opacity: 0;
+  cursor: pointer;
+  background-image: var(--vp-icon-copy);
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
+}
+
+.custom-copy.copied {
+  background-image: var(--vp-icon-copied);
+  background-color: var(--vp-code-copy-code-bg);
+  border-color: var(--vp-code-copy-code-border-color);
+  opacity: 1;
+}
+
+td:has(> .custom-copy):hover > .custom-copy {
+  opacity: 1;
+  background-color: var(--vp-code-copy-code-bg);
+}
+
+.custom-copy:focus {
+  outline: none;
+}
+
+.custom-copy:hover {
+  border-color: var(--vp-code-copy-code-hover-border-color);
+  background-color: var(--vp-code-copy-code-hover-bg);
+}
+
+.custom-copy:active {
+  background-color: var(--vp-c-primary-darker);
+}
+
+.custom-copy:disabled {
+  background-color: var(--vp-c-primary-light);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.custom-copy:disabled:hover {
+  background-color: var(--vp-c-primary);
+}
+
+.custom-copy:disabled:active {
+  background-color: var(--vp-c-primary-dark);
+}
+
+.custom-copy:disabled:focus {
+  outline: none;
+}
+
+.custom-copy:disabled:hover {
+  opacity: 1;
+}
+
+.custom-button {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--vp-c-text-2);
+  transition: color 0.5s;
+  border: 1px solid var(--vp-c-border);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.custom-button:hover {
+  color: var(--vp-c-text-1);
+  transition: color 0.25s;
+}
+
+.custom-input {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--vp-c-text-2);
+  transition: color 0.5s;
+  border: 1px solid var(--vp-c-border);
+  padding: 4px 12px;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.custom-input:focus {
+  outline: none;
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-primary);
+}
+
+.wrong {
+  border-color: #e10000 !important;
+}

@@ -1,0 +1,6 @@
+name = "usend-vendor"
+main = "dist/index.js"
+compatibility_date = "2023-07-07"
+
+[build]
+command = "npm run build"
