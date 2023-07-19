@@ -11,18 +11,13 @@ export async function generateRSAKeyPair() {
   );
 }
 
-export async function exportKey(key, type, isPEM = false) {
+export async function exportKey(key, type) {
   const format = type === "public" ? "spki" : "pkcs8";
   const exportedKey = await crypto.subtle.exportKey(format, key);
   const exportedKeyBuffer = new Uint8Array(exportedKey);
   const exportedKeyBase64 = btoa(
     String.fromCharCode.apply(null, exportedKeyBuffer)
   );
-
-  if (isPEM) {
-    const pemExportedKey = `-----BEGIN ${type.toUpperCase()} KEY-----\n${exportedKeyBase64}\n-----END ${type.toUpperCase()} KEY-----`;
-    return pemExportedKey;
-  }
 
   return exportedKeyBase64;
 }

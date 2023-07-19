@@ -106,7 +106,7 @@ To implement DKIM authentication, you need to generate a DKIM private key and ad
       <th @mouseover="showButton(0)" @mouseout="showButton(-1)">
         <div class="flex">
           Name
-          <button @click="copy(`mailchannels._domainkey`)" class="custom-clipboard"></button>
+          <button @click="copy(`mailchannels._domainkey.${ domain || 'example.com' }`)" class="custom-clipboard"></button>
         </div>
       </th>
       <th @mouseover="showButton(1)" @mouseout="showButton(-1)">
@@ -126,7 +126,7 @@ To implement DKIM authentication, you need to generate a DKIM private key and ad
   <tbody>
     <tr>
       <td @mouseover="showButton(0)" @mouseout="showButton(-1)">
-        mailchannels._domainkey
+        mailchannels._domainkey.{{ domain || "example.com" }}
       </td>
       <td @mouseover="showButton(1)" @mouseout="showButton(-1)">
         TXT
