@@ -29,7 +29,7 @@ By providing your domain and administrative email, you can proceed with the setu
 Usend is available as an npm package. You can install it using the following command:
 
 ```bash
-npm install usend
+npm install usend-email
 ```
 
 With this simple setup, you'll be ready to start utilizing Usend for sending emails in no time.
