@@ -33,7 +33,7 @@ To protect your domain from unauthorized third-party email spoofing, a combinati
 ::: warning
 This is an optional but **strongly recommended** step.
 
-DKIM (DomainKeys Identified Mail) protocol is based on RSA encryption. The standard implementation of Usend will search for a DKIM public key in your domain, and if the record exists, it will only send your email when you provide the private key during the sending process. On the other hand, if a DKIM record doesn't exist, the private key won't be required.
+The standard implementation of Usend will search for a DKIM RSA public key within your domain, and if the record exists, it will only send your email when you provide the private key during the sending process. On the other hand, if a DKIM record doesn't exist, the private key won't be required.
 
 If you want to improve your domain protection, follow these steps.
 :::

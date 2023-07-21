@@ -1,18 +1,17 @@
-export type UsendOptions = {
+type UsendOptions = {
   vendorUrl?: string;
   vendorApiKey?: string;
-  domain?: string;
   dkimPrivateKey?: string;
 };
 
 // prettier-ignore
-export type EmailContact = string | {
+type EmailContact = string | {
   email?: string;
   name?: string;
 };
 
 // prettier-ignore
-export type SendEmailOptions = {
+type SendEmailOptions = {
   from: EmailContact;
   to: EmailContact | EmailContact[];
   bcc?: EmailContact[];
