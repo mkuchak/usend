@@ -31,7 +31,11 @@ onMounted(async () => await generateKeys());
 To protect your domain from unauthorized third-party email spoofing, a combination of security measures are utilized, including SPF (Sender Policy Framework), Domain Lockdown™, DKIM (DomainKeys Identified Mail), and DMARC (Domain-based Message Authentication, Reporting, and Conformance) records. DKIM allows senders to digitally sign emails, ensuring that the content remains unaltered during transit. DMARC further enhances email security by providing a policy framework for authentication, reporting, and conformance, building upon the foundation laid by DKIM and SPF (Sender Policy Framework). These measures work together to fortify your domain against email fraud and maintain the integrity of your email communications.
 
 ::: warning
-This is an optional but **strongly recommended** step. If you want to improve your domain protection, follow these steps.
+This is an optional but **strongly recommended** step.
+
+DKIM (DomainKeys Identified Mail) protocol is based on RSA encryption. The standard implementation of Usend will search for a DKIM public key in your domain, and if the record exists, it will only send your email when you provide the private key during the sending process. On the other hand, if a DKIM record doesn't exist, the private key won't be required.
+
+If you want to improve your domain protection, follow these steps.
 :::
 
 
@@ -72,7 +76,7 @@ To add a DMARC record, access your DNS provider and add a TXT record with the fo
       <th @mouseover="showButton(2)" @mouseout="showButton(-1)">
         <div class="flex">
           Content
-          <button @click="copy(`v=DMARC1;p=reject;adkim=s;aspf=s;rua=mailto:${ email || 'admin@example.com' };ruf=mailto:${ email || 'admin@example.com' };pct=100;fo=1;`)" class="custom-clipboard"></button>
+          <button @click="copy(`v=DMARC1; p=reject; ruf=mailto:${ email || 'admin@example.com' }; rua=mailto:${ email || 'admin@example.com' };`)" class="custom-clipboard"></button>
         </div>
       </th>
     </tr>
@@ -86,7 +90,7 @@ To add a DMARC record, access your DNS provider and add a TXT record with the fo
         TXT
       </td>
       <td @mouseover="showButton(2)" @mouseout="showButton(-1)">
-        v=DMARC1;p=reject;adkim=s;aspf=s;rua=mailto:{{ email || "admin@example.com" }};ruf=mailto:{{ email || "admin@example.com" }};pct=100;fo=1;
+        v=DMARC1; p=reject; ruf=mailto:{{ email || "admin@example.com" }}; rua=mailto:{{ email || "admin@example.com" }};
       </td>
     </tr>
   </tbody>
@@ -118,7 +122,7 @@ To implement DKIM authentication, you need to generate a DKIM private key and ad
       <th @mouseover="showButton(2)" @mouseout="showButton(-1)">
         <div class="flex">
           Content
-          <button @click="copy(`v=DKIM1;p=${ exportedKeyPair?.publicKey }`)" class="custom-clipboard"></button>
+          <button @click="copy(`v=DKIM1; k=rsa; p=${ exportedKeyPair?.publicKey }`)" class="custom-clipboard"></button>
         </div>
       </th>
     </tr>
@@ -132,7 +136,7 @@ To implement DKIM authentication, you need to generate a DKIM private key and ad
         TXT
       </td>
       <td @mouseover="showButton(2)" @mouseout="showButton(-1)">
-        v=DKIM1;p={{ exportedKeyPair?.publicKey }}
+        v=DKIM1; k=rsa; p={{ exportedKeyPair?.publicKey }}
       </td>
     </tr>
   </tbody>
@@ -148,7 +152,7 @@ DKIM_PRIVATE_KEY={{ exportedKeyPair?.privateKey }}
 
 ### 4. And start sending secure emails with Usend
 
-With these simple steps, you can now start sending secure emails with Usend. 
+With these simple steps, you can now start sending secure emails.
 
 ```ts-vue{3}
 import { Usend } from "usend-email";
@@ -192,7 +196,7 @@ Now, open the `priv_key.txt` file, copy and place the contents in the `.env` fil
 Generate a public key (`.txt` file):
 
 ```bash
-echo -n "v=DKIM1;p=" > pub_key_record.txt && \
+echo -n "v=DKIM1; k=rsa; p=" > pub_key_record.txt && \
 openssl rsa -in priv_key.pem -pubout -outform der | openssl base64 -A >> pub_key_record.txt
 ```
 

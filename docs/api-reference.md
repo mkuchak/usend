@@ -19,7 +19,6 @@ Creates an instance of the `Usend` class.
 - `options` (optional): An object that can contain the following optional properties:
   - `vendorUrl` (string): The URL of the vendor's API. If not specified, the default vendor's URL will be used.
   - `vendorApiKey` (string): The API key for the vendor's API. If not specified, the default vendor's API key will be used.
-  - `domain` (string): The domain to be used for DKIM signing. If not specified, the domain of the sender's email address will be used.
   - `dkimPrivateKey` (string): The private key for DKIM signing. If not specified, DKIM signing will be disabled.
 
 Throws an error if the `vendorUrl` is invalid or if the `vendorUrl` is provided without the `vendorApiKey`.
@@ -76,14 +75,12 @@ An object that represents the options for configuring the `Usend` class.
 {
   vendorUrl?: string;
   vendorApiKey?: string;
-  domain?: string;
   dkimPrivateKey?: string;
 }
 ```
 
 - `vendorUrl` (optional): The URL of the vendor's API.
 - `vendorApiKey` (optional): The API key for the vendor's API.
-- `domain` (optional): The domain to be used for DKIM signing.
 - `dkimPrivateKey` (optional): The private key for DKIM signing.
 
 ### EmailContact

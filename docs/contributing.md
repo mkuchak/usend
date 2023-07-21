@@ -6,6 +6,6 @@ As we strive to enhance Usend's capabilities, we encourage you to explore new fe
 
 How about developing a queue for batch email sending? This feature would enable efficient processing and delivery of a large volume of emails, streamlining your email sending operations. Learn more about Cloudflare Queues: [Cloudflare Queues Documentation](https://developers.cloudflare.com/queues/)
 
-And how about expanding the SDK to more languages? Or having a CLI (Command Line Interface) to simplify the launch of the vendor itself? Such a CLI would provide a simplified and user-friendly interface for managing vendor releases, making it easier and more efficient for developers.
+And how about expanding the SDK to more languages? Or having a CLI (Command Line Interface) to simplify the launch of the vendor itself? Such a CLI would provide a simplified and developer-friendly interface for managing releases, making it easier and more efficient when deploying your custom vendor.
 
 Join with fellow developers, share your ideas, and contribute. Let's collaborate and create something remarkable together.

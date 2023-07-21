@@ -32,9 +32,9 @@ To start sending emails, it's essential to have your own domain. With your domai
 
 And just replace `example.com` with your actual domain name.
 
-### Add Domain Lockdown™
+### Add Domain Lockdown™ record
 
-To prevent unauthorized users and accounts from sending emails from your domain without your permission, you need to use [Domain Lockdown™](https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown-). To do this, add a TXT record with the following details:
+To authorize Usend to send emails on behalf of your domain, you need to use [Domain Lockdown™](https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown-). To do this, add a TXT record with the following details:
 
 | Name                      | Type | Content                |
 | ------------------------- | ---- | ---------------------- |
@@ -93,11 +93,15 @@ await usend.sendEmail({
   from: 'sender@example.com',
   to: 'recipient@example.com',
   subject: 'Hello from Usend',
-  react: EmailTemplate({ firstName: "John" }), // or <EmailTemplate firstName="John" />
+  react: EmailTemplate({ firstName: "John" }), // or in .tsx <EmailTemplate firstName="John" />
 });
 ```
 
 Finally, check the email in your inbox and enjoy! 🎉
+
+## Protect your Domain
+
+To prevent unauthorized third parties from sending emails from your domain without your permission, you can use RSA encryption based on the DKIM (DomainKeys Identified Mail) protocol. The standard implementation of Usend will search for a DKIM public key in your domain, and if the record exists, it will only send your email when you provide the private key during the sending process. For instructions on how to configure this option, refer to the [documentation](https://usend.email/domain-protection.html).
 
 ## Supporters
 

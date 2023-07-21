@@ -32,13 +32,13 @@ Usend is available as an npm package. You can install it using the following com
 npm install usend-email
 ```
 
-With this simple setup, you'll be ready to start utilizing Usend for sending emails in no time.
+With the simple configuration outlined below, you will be ready to utilizing Usend for sending emails in no time.
 
 ### 2. Add SPF record
 
-To start sending emails, it's essential to have your own domain. To verify domain ownership and authorize **MailChannels** (find out more about MailChannels [here](/supporters.html)) to send emails on your behalf, you need to add an SPF (Sender Policy Framework) record to your DNS settings. This record ensures that your domain is legitimate and allows for secure and authorized email transmission.
+To start sending emails, it's essential to have your own domain. With your domain active at a domain registrar, the first step is to list **MailChannels'** servers (find out more about MailChannels [here](/supporters.html)) as legitimate for email transmission. To do this, you should add an SPF (Sender Policy Framework) record to your DNS settings.
 
-To accomplish this, access your DNS provider and add a TXT record with the following details:
+So, access your DNS provider and add a TXT record with the following details:
 
 <table>
   <thead>
@@ -80,9 +80,9 @@ To accomplish this, access your DNS provider and add a TXT record with the follo
 
 And just replace `example.com` with your actual domain name.
 
-### 3. Setup Domain Lockdown™
+### 3. Add Domain Lockdown™ record
 
-To prevent unauthorized users and accounts from sending emails from your domain without your permission, you need to use [Domain Lockdown™](https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown-). To do this, add a TXT record with the following details:
+Now, to authorize Usend to send emails on behalf of your domain, you need to use [Domain Lockdown™](https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown-). To do this, add a TXT record with the following details:
 
 <table>
   <thead>
@@ -122,7 +122,7 @@ To prevent unauthorized users and accounts from sending emails from your domain 
   </tbody>
 </table>
 
-By adding this DNS TXT record, you indicate a list of permitted senders and accounts that are allowed to send emails from your domain. Any other accounts attempting to send from your domain will have their emails rejected with an error. This provides an additional layer of security and control over email sending from your domain.
+By adding this DNS TXT record, you indicate a list of allowed senders to send email from your domain. Any other sender attempting to send from your domain will have their emails bounced with an error. This provides an additional layer of security and control over sending email from your domain.
 
 ### 4. Send email using HTML
 

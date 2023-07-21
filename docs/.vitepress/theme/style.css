@@ -38,17 +38,9 @@
 
 :root {
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    120deg,
-    #0045ff 30%,
-    #00d4ff
-  );
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #0045ff 30%, #00d4ff);
 
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #0045ff 50%,
-    #00d4ff 50%
-  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #0045ff 50%, #00d4ff 50%);
   --vp-home-hero-image-filter: blur(40px);
 }
 
@@ -91,6 +83,12 @@
 /**
  * Custom Styles
  * -------------------------------------------------------------------------- */
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .flex {
   display: flex;
