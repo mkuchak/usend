@@ -5,22 +5,17 @@ import { EmailTemplate } from "./EmailTemplate";
 const usend = new Usend();
 
 const main = async () => {
-  const uuid = randomUUID();
-  const firstName = ["John", "Jane", "Jack", "Jill", "James", "Jenny"][
-    Math.floor(Math.random() * 5)
-  ];
+  const [userId, firstName] = [randomUUID(), "John"];
 
   try {
     await usend.sendEmail({
-      from: "sender@example.com",
-      to: `recipient-${uuid}@mailsac.com`,
+      from: "welcome@example.com",
+      to: `${userId}@mailsac.com`,
       subject: `Welcome to Usend!`,
       react: EmailTemplate({ firstName }),
     });
 
-    console.log(
-      `Check the link https://mailsac.com/inbox/recipient-${uuid}@mailsac.com to view the sent email.`
-    );
+    console.log(`Check the link https://mailsac.com/inbox/${userId}@mailsac.com to view the sent email.`);
   } catch (error) {
     console.error(error);
   }
