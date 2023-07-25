@@ -21,9 +21,9 @@ It provides a straightforward and flexible API for defining mock endpoints and c
 
 To mock the response of the Usend API endpoint `https://api.usend.email/send` using the `POST` method, you can refer to the code snippet below. The following example code showcases a test scenario where we mock the Usend API response for the `signInUseCase` function, allowing you to simulate the API call and verify the expected behavior.
 
-```ts-vue{29-30,32-35,43-45}
+```ts-vue{29-30,32-35,43-44}
 import nock from "nock";
-import { Usend } from "usend-email";
+import { Usend, MailSendBody } from "usend-email";
 
 async function signInUseCase(input: { email: string }): Promise<void> {
   const accessCode = Math.floor(Math.random() * 1000000)
@@ -51,11 +51,11 @@ afterAll(() => nock.enableNetConnect());
 describe("Usend API Test", () => {
   it("should mock Usend API response", async () => {
     // Declare a variable to store the payload that was sent to Usend API
-    let payload = "";
+    let payload: MailSendBody;
 
     // Mock the Usend API response and prepare to store the payload
     nock("https://api.usend.email")
-      .post("/send", (body: string) => ((payload = body), true))
+      .post("/send", (body: MailSendBody) => ((payload = body), true))
       .reply(202);
 
     // Fake user email
@@ -65,8 +65,7 @@ describe("Usend API Test", () => {
     await signInUseCase(input);
 
     // Check the payload that was sent to Usend API and extract the access code
-    const accessCode =
-      JSON.parse(payload).content[0].value.match(/\d{3}-\d{3}/)[0];
+    const accessCode = payload.content[0].value.match(/\d{3}-\d{3}/)[0];
 
     // Compare the access code with the expected value to make sure it works
     expect(accessCode).toBeTypeOf("string");

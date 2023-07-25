@@ -34,8 +34,10 @@ Sends an email with the specified options.
   - `to`: The recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
   - `bcc` (optional): The blind carbon copy recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
   - `cc` (optional): The carbon copy recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
-  - `replyTo` (optional): The email address(es) to which replies should be sent. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
+  - `replyTo` (optional): The email address to which replies should be sent. It can be a string representing an email address, an object with `email` and `name` properties.
   - `subject`: The subject of the email.
+  - `attachments` (optional): An attachment file or an array of attachment files to be sent with the email.
+  - `unsubscribe` (optional): The unsubscribe information for the email.
   - `text` (optional): The plain text content of the email.
   - `html` (optional): The HTML content of the email.
   - `react` (optional): The React component to be rendered as the email content.
@@ -97,6 +99,36 @@ type EmailContact = string | {
 - If `EmailContact` is a string, it represents an email address.
 - If `EmailContact` is an object, it can have `email` and `name` properties representing the email address and the name of the contact, respectively.
 
+### AttachmentFile
+
+A string or an object representing an attachment file.
+
+```ts
+type AttachmentFile = string | {
+  path: string;
+  name?: string;
+};
+```
+
+- If `AttachmentFile` is a string, it represents the file path.
+- If `AttachmentFile` is an object, it can have a `path` property representing the file path, and an optional `name` property representing the desired filename for the attachment.
+
+**Note**: Currently, this field only allows the attachment of texts due to the limitation of the `Content-Transfer-Encoding: quoted-printable` header defined by MailChannels. Maybe in the future Base64 encoding will be supported.
+
+### ListUnsubscribe
+
+A string or an object representing the unsubscribe information for the email.
+
+```ts
+type ListUnsubscribe = string | {
+  email?: string;
+  url?: string;
+};
+```
+
+- If `ListUnsubscribe` is a string, it represents a URL for unsubscribing.
+- If `ListUnsubscribe` is an object, it can have `email` and/or `url` properties representing the email address and/or the URL for unsubscribing, respectively.
+
 ### SendEmailOptions
 
 An object that represents the options for sending an email.
@@ -105,10 +137,12 @@ An object that represents the options for sending an email.
 type SendEmailOptions = {
   from: EmailContact;
   to: EmailContact | EmailContact[];
-  bcc?: EmailContact[];
-  cc?: EmailContact[];
-  replyTo?: EmailContact[];
+  bcc?: EmailContact | EmailContact[];
+  cc?: EmailContact | EmailContact[];
+  replyTo?: EmailContact;
   subject: string;
+  attachments?: AttachmentFile | AttachmentFile[];
+  unsubscribe?: ListUnsubscribe;
 } & (
   | { text: string }
   | { html: string }
@@ -122,6 +156,22 @@ type SendEmailOptions = {
 - `cc` (optional): The carbon copy recipient(s) of the email.
 - `replyTo` (optional): The email address(es) to which replies should be sent.
 - `subject`: The subject of the email.
+- `attachments` (optional): An attachment file or an array of attachment files to be sent with the email.
+- `unsubscribe` (optional): The unsubscribe information for the email.
 - `text` (optional): The plain text content of the email.
 - `html` (optional): The HTML content of the email.
 - `react` (optional): The React component to be rendered as the email content.
+
+### SendEmailResponse
+
+An object representing the response after sending an email.
+
+```ts
+type SendEmailResponse = {
+  status: number;
+  data: any;
+};
+```
+
+- `status`: The status code of the response.
+- `data`: Additional data returned after sending the email.
