@@ -1,6 +1,6 @@
 {
   "name": "usend-email",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "A free alternative for sending emails in Node.js",
   "homepage": "https://usend.email",
   "repository": {
@@ -28,20 +28,25 @@
     "./dist/"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest"
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "mime": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/mime": "^3.0.1",
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "dotenv": "^16.3.1",
+    "nock": "^13.3.2",
     "tsup": "^7.1.0",
     "typescript": "^5.1.5",
+    "vitest": "^0.33.0",
     "zod": "^3.21.4"
   }
 }
