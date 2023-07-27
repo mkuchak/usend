@@ -1,6 +1,6 @@
 {
   "name": "usend-email",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A free alternative for sending emails in Node.js",
   "homepage": "https://usend.email",
   "repository": {

@@ -31,9 +31,9 @@ Sends an email with the specified options.
 
 - `options`: An object containing the following properties:
   - `from`: The sender of the email. It can be a string representing an email address or an object with `email` and `name` properties.
-  - `to`: The recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
-  - `bcc` (optional): The blind carbon copy recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
-  - `cc` (optional): The carbon copy recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects.
+  - `to`: The recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects with a maximum length of 1000.
+  - `bcc` (optional): The blind carbon copy recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects with a maximum length of 1000.
+  - `cc` (optional): The carbon copy recipient(s) of the email. It can be a string representing an email address, an object with `email` and `name` properties, or an array of such objects with a maximum length of 1000.
   - `replyTo` (optional): The email address to which replies should be sent. It can be a string representing an email address, an object with `email` and `name` properties.
   - `subject`: The subject of the email.
   - `attachments` (optional): An attachment file or an array of attachment files to be sent with the email.

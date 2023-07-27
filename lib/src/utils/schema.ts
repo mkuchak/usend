@@ -27,9 +27,9 @@ const listUnsubscribeSchema = z.union([
 export const sendEmailOptionsSchema = z
   .object({
     from: emailContactSchema,
-    to: z.union([emailContactSchema, z.array(emailContactSchema)]),
-    bcc: z.union([emailContactSchema, z.array(emailContactSchema)]).optional(),
-    cc: z.union([emailContactSchema, z.array(emailContactSchema)]).optional(),
+    to: z.union([emailContactSchema, z.array(emailContactSchema).max(1000)]),
+    bcc: z.union([emailContactSchema, z.array(emailContactSchema).max(1000)]).optional(),
+    cc: z.union([emailContactSchema, z.array(emailContactSchema).max(1000)]).optional(),
     replyTo: emailContactSchema.optional(),
     subject: z.string(),
     attachments: z.union([attachmentFileSchema, z.array(attachmentFileSchema)]).optional(),
