@@ -1,5 +1,7 @@
 # Usend
 
+**⚠️ Important Notice: This project has been discontinued as of June 30th, 2024. Cloudflare Workers customers must transition to an alternative email delivery solution by this date. For more information, please read the detailed End of Life notice [here](https://support.mailchannels.com/hc/en-us/articles/26814255454093-End-of-Life-Notice-Cloudflare-Workers).**
+
 This is a powerful email sending library called **Usend**. It provides a clean and easy approach to sending emails with various options in Node.js. For more details, check out the complete [documentation](https://usend.email).
 
 ## Project Structure
